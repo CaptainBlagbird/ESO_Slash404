@@ -10,17 +10,17 @@ https://github.com/CaptainBlagbird
 local message = "Command not found"
 local lang = GetCVar("Language.2")
 if lang == "de" then
-	message = "Befehl nicht gefunden"
+    message = "Befehl nicht gefunden"
 elseif lang == "fr" then
-	message = "Commande non trouvée"
+    message = "Commande non trouvée"
 end
 
 -- Replace ExecuteChatCommand()
 local func_orig = ExecuteChatCommand
 ExecuteChatCommand = function(str)
-	if SLASH_COMMANDS[str] == nil then
-		d(message)
-	else
-		func_orig(str)
-	end
+    if SLASH_COMMANDS[str] == nil then
+        d(message)
+    else
+        func_orig(str)
+    end
 end
