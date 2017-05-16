@@ -6,21 +6,11 @@ https://github.com/CaptainBlagbird
 
 --]]
 
--- Language
-local message = "Command not found"
-local lang = GetCVar("Language.2")
-if lang == "de" then
-    message = "Befehl nicht gefunden"
-elseif lang == "fr" then
-    message = "Commande non trouvée"
-end
-
--- Replace ExecuteChatCommand()
-local func_orig = ExecuteChatCommand
-ExecuteChatCommand = function(str)
-    if SLASH_COMMANDS[str] == nil then
-        d(message)
-    else
-        func_orig(str)
+-- Replace ZO_Alert function
+local func_orig = ZO_Alert
+ZO_Alert = function(category, soundId, message, ...)
+    if (category == UI_ALERT_CATEGORY_ALERT) and (message == SI_ERROR_INVALID_COMMAND) then
+        d(zo_strformat(message, ...))
     end
+    return func_orig(category, soundId, message, ...)
 end
