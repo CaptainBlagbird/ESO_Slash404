@@ -1,7 +1,7 @@
 ## Title: Slash 404 |c555555v1.1|r
 ## Version: 1.1
 ## Author: |c70C0DECaptainBlagbird|r
-## APIVersion: 100022
+## APIVersion: 100025
 ## Description: Displays a message when the entered slash command does not exist.
 
 Slash404.lua
